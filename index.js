@@ -3,8 +3,8 @@ var readlineSync = require("readline-sync");
 // Score of User
 var score = 0
 
-// Quiz question-answer array
-var Question = [
+// MCQ type questions array
+var MCQquestions = [
     {
         question: "There's a bowl with seven apples. You remove three. How many do you have?",
         Options: {
@@ -57,43 +57,99 @@ var Question = [
     }
 ];
 
-var highScore = {
-    name: "Muskan",
-    score: 3
-}
+
+// one-word type questions array
+var OneWOrdques = [
+    {
+        question: "Q1. What is full of holes but still holds water?",
+        answer: "sponge"
+    },
+    {
+        question: "Q2. I have branches, but no fruit, trunk or leaves. What am I? ",
+        answer: "bank"
+    },
+    {
+        question: "Q3. David’s parents have three sons: Snap, Crackle, and what’s the name of the third son?",
+        answer: "david"
+    },
+    {
+        question: "Q4. I am an odd number. Take away a letter and I become even. What number am I? ",
+        answer: "seven"
+    },
+    {
+        question: "Q5. What can travel all around the world without leaving its corner? ",
+        answer: "stamp"
+    }
+];
+
+
+var highScore = [
+    {
+        game: "MCQ",
+        name: "Muskan",
+        score: 4
+    },
+    {
+        game: "One-Word",
+        name: "Muskan",
+        score: 3
+    }
+];
 
 
 // greeting user
 function welcome () {
     var userName = readlineSync.question("Enter your Name: ");
     console.log("\nWelcome " + userName);
-    console.log("Ready to PLAY Tricky Trivia!")
+    console.log("\nReady to PLAY Tricky Trivia! \nWe have 2 choices for you....")
+    console.log("\n1. MCQ \n2. One-Word")
+    var userChoice = readlineSync.question("\nWhat do you wanna play (1 or 2)? ")
     
-    game(userName);
+    game(userName, userChoice);
 }
 
 // main game function
-function game(userName){
+function game(userName, choice){
 
-    for(var i=0; i<5; i++){
+    if(choice == "1"){
+        for(var i=0; i<5; i++){
 
-        var currentQues = Question[i];
-        play(currentQues.question, currentQues.Options, currentQues.answer);
+            var currentQues = MCQquestions[i];
+            play(currentQues.question, currentQues.answer, currentQues.Options);
+        }
     }
 
-    showScore(userName);
+    else{
+        for(var i=0; i<5; i++){
+
+            var currentQues = OneWOrdques[i];
+            play(currentQues.question, currentQues.answer);
+        } 
+    }
+    
+
+    showScore(userName, choice);
 }
 
 
 // play function
-function play(question, options, answer){
+function play(question, answer, options){
     console.log("\n"+question);
 
-    for(let key in options){
-        console.log(key + ": " + options[key]);
+    if(options != undefined){
+
+        for(let key in options){
+            console.log(key + ": " + options[key]);
+        }
+
+        var userAnswer = readlineSync.question("\nChoose any one option: ");
     }
 
-    var userAnswer = readlineSync.question("\nChoose any one option: ");
+    else{
+        var userAnswer = readlineSync.question("Your Answer? ");
+        console.log();
+
+    }
 
     if( userAnswer.toLowerCase() === answer){
         console.log("Correct answer!");
@@ -111,15 +167,20 @@ function play(question, options, answer){
 
 
 // function for displaying total score
-function showScore(userName){
-    console.log("\n\n You SCORED: ", score);
+function showScore(userName, choice){
+    
+    if(highScore[choice-1].score <= score){
 
-    if(highScore.score <= score){
-        highScore.name = userName;
-        highScore.score = score;
+        console.log("\n\n Congartulations! You SCORED: ", score);
+        highScore[choice-1].name = userName;
+        highScore[choice-1].score = score;
+    }
+
+    else{
+        console.log("\n\n You SCORED: ", score);
     }
   console.log("\nCheck out the high scores!");
-  console.log(highScore.name, " : ", highScore.score + "\n");
+  console.log(highScore[choice-1].name, " : ", highScore[choice-1].score + "\n");
 }
 
 welcome();
