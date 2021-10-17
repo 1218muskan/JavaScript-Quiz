@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricky Trivia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="first-page">
+        <h1>Tricky Trivia!</h1>
+        <div class="main-content">
+            
+            <div class="player_input">
+                
+                <input id="name" type="text" value="Enter Your Name" onfocus="this.value=''">
+                <h2 id="wlcm-mssg">Welcome <span> Player </span> <br> Ready to PLAY Tricky Trivia!!</h2>
+
+                <div class='UserChoice'>
+                    We have 2 choices for you....<br><br>
+                    <input type="radio" id="mcq" name="choice" value="mcq"><label for="mcq"> MCQ</label><br>
+                    <input type="radio" id="oneWord" name="choice" value="oneWord"><label for="oneWord">One Word</label> 
+                </div>
+                <br>
+            
+                <!-- <input type="submit" id="startBtn" value="Start"></input> -->
+                <button id="startBtn">Start</button>
+
+            </div>
+
+            <div class="quiz-image">
+                <img src="images/Quiz Time.jpg" width="600px" height="400px">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="second-page">
+
+        <div class="timer">
+            <span>Time Remaining </span>
+            <span id="show-time"> </span>
+        </div>
+
+        <div class="quiz-container">
+            
+        </div>
+    
+        <div class="Result">
+            <div class="Score">
+    
+            </div>
+    
+            <button type="submit" id="submitBtn">Submit Quiz</button>
+            <button id="resetQuiz">Retake Quiz</button>  
+
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
