@@ -233,7 +233,7 @@ function showScore(score){
 function updateTime(restart_timer = false){
 
     if(restart_timer){
-        time = 5*60;
+        time = 3*60;
     }
 
     const minutes = Math.floor(time/60);
