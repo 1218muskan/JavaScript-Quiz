@@ -8,7 +8,6 @@ var userChoice = document.querySelectorAll(".UserChoice input");
 var start_quiz_btn = document.getElementById("startBtn");
 var quiz_container = document.querySelector(".quiz-container");
 
-var result = document.querySelector(".Result");
 var submitBtn = document.getElementById("submitBtn");
 var quizReset = document.getElementById("resetQuiz");
 var PlayerScore = document.querySelector(".Score");
@@ -16,7 +15,7 @@ var PlayerScore = document.querySelector(".Score");
 var time_span = document.getElementById("show-time");
 
 // starting timer
-const startingMinutes = 5;
+const startingMinutes = 3;
 let time = startingMinutes*60;
 
 
