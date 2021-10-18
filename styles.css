@@ -41,6 +41,10 @@ h1 {
     margin: 45px 0;
 }
 
+#wlcm-mssg > span {
+    text-transform: capitalize;
+}
+
 #name {
     font-size: 20px;
     background-color: transparent;
